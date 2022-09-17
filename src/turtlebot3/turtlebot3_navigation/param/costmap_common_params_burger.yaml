@@ -1,0 +1,23 @@
+map_type: costmap
+
+obstacle_layer:
+    enabled: true
+    obstacle_range: 3.0 # max distance to mark obstacles
+    raytrace_range: 3.5 # max distance to remove obstacles
+    inflation_radius: 0.2
+    combination_method: 1
+    footprint: [[-0.105, -0.105], [-0.105, 0.105], [0.041, 0.105], [0.041, -0.105]]
+
+static_layer:
+    enabled:              true
+    map_topic:            "map"
+    track_unknown_space:  false
+
+layer_enabled:
+    inflation:              true
+    cost_scaling_factor: 1.0 # exp(-1.0 * cost_scaling_factor * (distance_from_obstacle – inscribed_radius)) * (costmap_2d::INSCRIBED_INFLATED_OBSTACLE - 1) 
+    inflation_radius:     0.6 # max. distance from an obstacle at which costs are incurred for planning paths.
+
+
+observation_sources: scan
+scan: {sensor_frame: base_scan, data_type: LaserScan, topic: scan, marking: true, clearing: true}

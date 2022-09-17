@@ -1,0 +1,29 @@
+global_costmap:
+    # Frame
+    global_frame: map
+    robot_base_frame: base_link
+
+    # Update Frequency
+    update_frequency: 5.0
+    publish_frequency: 2.0
+
+    # Map Type
+    static_map: true
+    rolling_window: false
+
+    # Tolerance
+    transform_tolerance: 0.5
+
+    # Map Size
+    height: 600
+    width: 600
+    resolution: 0.1
+
+    # Footprint
+    footprint: [[-0.6,0.275], [0.6,0.275], [0.6,-0.275], [-0.6,-0.275]]
+    
+    # Plugins
+    plugins:
+        - {name: static_layer,            type: "costmap_2d::StaticLayer"}
+        - {name: obstacle_layer,          type: "costmap_2d::ObstacleLayer"}
+        - {name: inflation_layer,         type: "costmap_2d::InflationLayer"}
